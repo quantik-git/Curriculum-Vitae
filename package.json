@@ -1,0 +1,43 @@
+{
+  "name": "curriculum-vitae",
+  "version": "1.0.0",
+  "description": "CV for EESTEC",
+  "main": "index.html",
+  "scripts": {
+    "watch:css": "onchange './src/index.html' -- npm run build:css && npm run build:html",
+    "build:html": "html-minifier --collapse-whitespace ./src/index.html -o ./dist/index.html",
+    "build:img": "imagemin --plugin.webp.quality=95 --out-dir=dist/img src/img/**/*.{png,jpg,gif}",
+    "build:css": "postcss ./src/css/tailwind.css -o ./dist/css/tailwind.min.css",
+    "build:js": "minify ./src/js/main.js > ./dist/js/main.min.js",
+    "build": "npm run build:css && npm run build:js && npm run build:html",
+    "resize:imgs": "node ./resize.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantik-git/Curriculum-Vitae.git"
+  },
+  "author": "David Machado",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/quantik-git/Curriculum-Vitae/issues"
+  },
+  "homepage": "https://github.com/quantik-git/Curriculum-Vitae#readme",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.0",
+    "autoprefixer": "^10.2.3",
+    "cssnano": "^4.1.10",
+    "html-minifier": "^4.0.0",
+    "imagemin-cli": "^6.0.0",
+    "imagemin-webp": "^6.0.0",
+    "jimp": "^0.16.1",
+    "minify": "^6.0.1",
+    "onchange": "^7.1.0",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.4.0"
+  }
+}
